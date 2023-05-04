@@ -1,3 +1,61 @@
+-- [METADATA]:- 
+Table Name:-kagglesales
++-----------------------+--------------+
+| Column Name           | Data Type    |
++-----------------------+--------------+
+| ORDERNUMBER           | int          |
++-----------------------+--------------+
+| QUANTITYORDERED       | int          |
++-----------------------+--------------+
+| PRICEEACH             | double       |
++-----------------------+--------------+
+| ORDERLINENUMBER       | int          |
++-----------------------+--------------+
+| SALES                 | double       |
++-----------------------+--------------+
+| ORDERDATE             | datetime     |
++-----------------------+--------------+
+| STATUS                | text         |
++-----------------------+--------------+
+| QTR_ID                | int          |
++-----------------------+--------------+
+| MONTH_ID              | int          |
++-----------------------+--------------+
+| YEAR_ID               | int          |
++-----------------------+--------------+
+| PRODUCTLINE           | text         |
++-----------------------+--------------+
+| MSRP                  | int          |
++-----------------------+--------------+
+| PRODUCTCODE           | text         |
++-----------------------+--------------+
+| CUSTOMERNAME          | text         |
++-----------------------+--------------+
+| PHONE                 | text         |
++-----------------------+--------------+
+| ADDRESSLINE1          | text         |
++-----------------------+--------------+
+| ADDRESSLINE2          | text         |
++-----------------------+--------------+
+| CITY                  | text         |
++-----------------------+--------------+
+| STATE                 | text         |
++-----------------------+--------------+
+| POSTALCODE            | text         |
++-----------------------+--------------+
+| COUNTRY               | text         |
++-----------------------+--------------+
+| TERRITORY             | text         |
++-----------------------+--------------+
+| CONTACTLASTNAME       | text         |
++-----------------------+--------------+
+| CONTACTFIRSTNAME      | text         |
++-----------------------+--------------+
+| DEALSIZE              | text         |
++-----------------------+--------------+
+
+-------------------------------------------------[Questions & SQL-Queries]---------------------------------------
+
 #QUE 1- Which month had the highest sales ? 
 #SOLUTION - 'November' month had the highest sales with '2118885.67'
 
@@ -19,7 +77,12 @@ LIMIT 1;
 
 
 #QUE 3- What products are more often sold together ?
-# SOLUTION -
+# SOLUTION - bellow products are more often sold together 
+S18_2957 and	S18_3136
+S18_2319 and 	S18_3232
+S24_2841 and	S24_3420
+S50_1341 and 	S700_1691
+S24_3949 and	S700_4002
 
 select t1.productcode, t2.productcode, count(*) as PurchaseFrequency
 from kagglesales t1
@@ -82,11 +145,7 @@ LIMIT 1;
 #QUE 9-  How long does it take on average to ship a product?
 # ANS - incomplete data , there is no column related to the shipping time.
 
-#QUE 10- What is the correlation between discounts and quantity sold?
-select * from kagglesales
 
-WITH CTE AS (SELECT * , (MSRP-PRICEEACH) AS DISCOUNT FROM Kagglesales)
-SELECT corr(DISCOUNT,QUANTITYORDERED) FROM CTE;
 
 
 
